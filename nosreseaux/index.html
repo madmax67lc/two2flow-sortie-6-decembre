@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two2Flow - Nos Réseaux</title>
+    <link rel="icon" type="image/png" href="profile_two2flow.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+    <div class="container">
+        
+        <button class="share-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        </button>
+
+        <div class="profile-section">
+            <img src="profile_two2flow.png" alt="Photo de fond" class="profile-bg-img">
+            <img src="logo_two2flow.png" alt="Two2Flow" class="profile-logo">
+        </div>
+
+        <div class="tabs">
+            <a href="/" class="tab" style="text-decoration: none; display: inline-block; line-height: normal;">Nos Sons</a>
+            <a href="/nosreseaux/" class="tab active" style="text-decoration: none; display: inline-block; line-height: normal;">Nos Réseaux</a>
+        </div>
+
+        <h2 class="subtitle">Tous nos réseaux disponibles :</h2>
+
+        <div class="links-list">
+            <a href="mailto:two2flow.contact@gmail.com" class="link-item">
+                <img src="gmail.svg" alt="" class="social-img">
+                <span class="link-text">Mail</span>
+            </a>
+
+            <a href="https://open.spotify.com/intl-fr/artist/1KoELF46r0lbtlws05PdfT?si=xZ7K8CrxSB6BoHri5swxLQ" class="link-item">
+                <img src="spotify.svg" alt="" class="social-img">
+                <span class="link-text">Spotify</span>
+            </a>
+
+            <a href="https://www.tiktok.com/@two2flow" class="link-item">
+                <img src="tiktok.svg" alt="" class="social-img">
+                <span class="link-text">TikTok</span>
+            </a>
+
+            <a href="https://www.instagram.com/two2flow/" class="link-item">
+                <img src="instagram.svg" alt="" class="social-img">
+                <span class="link-text">Instagram</span>
+            </a>
+
+            <a href="https://www.youtube.com/channel/UCngskKeC9wstImOdrPolRLw" class="link-item">
+                <img src="youtube.svg" alt="" class="social-img">
+                <span class="link-text">YouTube</span>
+            </a>
+
+            <a href="https://dzr.page.link/a189Lf84WXCwNemp6" class="link-item">
+                <img src="deezer.webp" alt="" class="social-img">
+                <span class="link-text">Deezer</span>
+            </a>
+
+            <a href="https://music.apple.com/fr/artist/two2flow/1820020308?at=1000l3bbu&itscg=30200&itsct=music_box_link&ls=1&app=music" class="link-item">
+                <img src="applemusic.svg" alt="" class="social-img">
+                <span class="link-text">Apple Music</span>
+            </a>
+
+            <a href="https://www.snapchat.com/add/two2flow" class="link-item">
+                <img src="snapchat.svg" alt="" class="social-img">
+                <span class="link-text">Snapchat</span>
+            </a>
+
+            <a href="https://on.soundcloud.com/HpaL9BOyKHbkd54RZ2" class="link-item">
+                <img src="soundcloud.svg" alt="" class="social-img">
+                <span class="link-text">SoundCloud</span>
+            </a>
+
+            <a href="https://tidal.com/browse/artist/62017390" class="link-item">
+                <img src="tidal.svg" alt="" class="social-img">
+                <span class="link-text">Tidal</span>
+            </a>
+
+            <a href="https://music.amazon.fr/artists/B0FCVTDG37/two2flow" class="link-item">
+                <img src="amazonmusic.svg" alt="" class="social-img">
+                <span class="link-text">Amazon Music</span>
+            </a>
+        </div>
+
+        <div class="legal-footer">
+            <a href="/mentions-legales/">Mentions légales</a>
+            <span class="dot">&middot;</span>
+            <a href="/politique-confidentialite/">Confidentialité</a>
+        </div>
+
+    </div>
+</div> <script>
+        // On cible le bouton de partage
+        const shareBtn = document.querySelector('.share-btn');
+
+        // On écoute le clic sur le bouton
+        shareBtn.addEventListener('click', async () => {
+            // Les infos qu'on va partager
+            const shareData = {
+                title: 'Two2Flow',
+                text: 'Découvrez tous nos sons et réseaux !',
+                url: window.location.href // Récupère l'URL automatique de ta page
+            };
+
+            // On vérifie si le navigateur supporte le partage natif (surtout sur mobile)
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Partage annulé ou erreur :', err);
+                }
+            } else {
+                // Si non supporté, on copie le lien en plan B
+                navigator.clipboard.writeText(window.location.href);
+                alert('Le lien du site a été copié dans le presse-papier !');
+            }
+        });
+    </script>
+
+</body>
+</html>
+</body>
+</html>

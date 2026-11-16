@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two2Flow - Liens</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importation de Inter (Boutons) ET Montserrat (Titres) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+    <div class="container">
+        
+        <button class="share-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        </button>
+
+        <div class="profile-section">
+            <img src="profile_two2flow.png" alt="Photo de fond" class="profile-bg-img">
+            <img src="logo_two2flow.png" alt="Two2Flow" class="profile-logo">
+        </div>
+
+        <div class="tabs">
+            <a href="/" class="tab active" style="text-decoration: none; display: inline-block; line-height: normal;">Nos Sons</a>
+            <a href="/nosreseaux/" class="tab" style="text-decoration: none; display: inline-block; line-height: normal;">Nos Réseaux</a>
+        </div>
+
+        <h2 class="subtitle">Les sons disponible sur les plateformes :</h2>
+
+        <div class="links-list">
+<a href="https://distrokid.com/hyperfollow/two2flow/remis-feat-nmr" class="link-item">
+               <img src="miniature-remis-feat-nmr.png" alt="" class="music-img">
+               <span class="link-text">Remis <br><span class="petit-texte"><i>Feat. NMR</i></span></span>
+            </a>
+            <a href="https://distrokid.com/hyperfollow/two2flow/love-story" class="link-item">
+                <img src="miniature-love-story.png" alt="Love Story" class="music-img">
+                <span class="link-text">Love Story</span>
+            </a>
+
+            <a href="https://distrokid.com/hyperfollow/two2flow/pos-sous-le-soleil" class="link-item">
+                <img src="miniature-pose-sous-le-soleil.png" alt="Posé Sous Le Soleil" class="music-img">
+                <span class="link-text">Posé Sous Le Soleil</span>
+            </a>
+
+            <a href="https://distrokid.com/hyperfollow/two2flow/ctait-pas-comme-a-2" class="link-item">
+                <img src="miniature-c-etait-pas-comme-ca.png" alt="C'était Pas Comme Ça" class="music-img">
+                <span class="link-text">C'était Pas Comme Ça</span>
+            </a>
+
+            <a href="https://distrokid.com/hyperfollow/two2flow/laisse-les-faire" class="link-item">
+                <img src="miniature-laisse-les-faire.png" alt="Laisse Les Faire" class="music-img">
+                <span class="link-text">Laisse Les Faire</span>
+            </a>
+
+        </div>
+
+        <div class="legal-footer">
+            <a href="/mentions-legales/">Mentions légales</a>
+            <span class="dot">&middot;</span>
+            <a href="/politique-confidentialite/">Confidentialité</a>
+        </div>
+
+    </div>
+</div> <script>
+        // On cible le bouton de partage
+        const shareBtn = document.querySelector('.share-btn');
+
+        // On écoute le clic sur le bouton
+        shareBtn.addEventListener('click', async () => {
+            // Les infos qu'on va partager
+            const shareData = {
+                title: 'Two2Flow',
+                text: 'Découvrez tous nos sons et réseaux !',
+                url: window.location.href // Récupère l'URL automatique de ta page
+            };
+
+            // On vérifie si le navigateur supporte le partage natif (surtout sur mobile)
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Partage annulé ou erreur :', err);
+                }
+            } else {
+                // Si non supporté, on copie le lien en plan B
+                navigator.clipboard.writeText(window.location.href);
+                alert('Le lien du site a été copié dans le presse-papier !');
+            }
+        });
+    </script>
+
+</body>
+</html>
+</body>
+</html>

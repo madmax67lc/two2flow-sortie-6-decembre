@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two2Flow - Politique de Confidentialité</title>
+    <link rel="icon" type="image/png" href="profile_two2flow.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=6">
+</head>
+<body>
+
+    <div class="container">
+
+        <button class="share-btn">
+            <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+        </button>
+
+        <div class="profile-section">
+            <img src="profile_two2flow.png" alt="Photo de fond" class="profile-bg-img">
+            <img src="logo_two2flow.png" alt="Two2Flow" class="profile-logo">
+        </div>
+
+        <a href="/" class="back-link">&larr; Retour à l'accueil</a>
+
+        <h1 class="page-title">Politique de Confidentialité</h1>
+
+        <div class="legal-content">
+
+            <section>
+                <h3>1. Traitement des données personnelles</h3>
+                <p>Le présent site fonctionne principalement comme un annuaire de liens d'orientation vers nos morceaux et réseaux sociaux. Le site en lui-même ne collecte directement aucune donnée personnelle nominative (aucun formulaire d'inscription, aucun système de compte utilisateur, aucun paiement direct).</p>
+            </section>
+
+            <section>
+                <h3>2. Statistiques d'audience et hébergement (IONOS)</h3>
+                <p>Notre site est hébergé par la société IONOS. Dans le cadre du bon fonctionnement technique du serveur et de la fourniture de statistiques de fréquentation anonymes, l'hébergeur IONOS peut collecter automatiquement certaines données techniques non nominatives lors de votre visite :</p>
+                <ul>
+                    <li>Le nombre total de visiteurs et de pages vues ;</li>
+                    <li>Le type de navigateur internet et le système d'exploitation utilisé ;</li>
+                    <li>Le nom de domaine ou l'adresse IP (anonymisée conformément à la réglementation RGPD) ;</li>
+                    <li>L'heure et la date de la connexion ;</li>
+                    <li>Le site ou le lien référent à l'origine de votre visite.</li>
+                </ul>
+                <p>Ces données sont traitées à des fins purement statistiques et techniques pour mesurer l'audience globale du site et garantir sa sécurité et son optimisation. Elles ne sont en aucun cas croisées avec des identités personnelles.</p>
+            </section>
+
+            <section>
+                <h3>3. Services tiers et redirection</h3>
+                <p>En cliquant sur les liens présents sur ce site, vous êtes redirigé vers des plateformes tierces :</p>
+                <ul>
+                    <li>DistroKid : service utilisé pour centraliser la redirection vers les plateformes de streaming.</li>
+                    <li>Plateformes de streaming et réseaux sociaux : Spotify, Apple Music, Deezer, YouTube, Instagram, TikTok, Snapchat, SoundCloud, Tidal, Amazon Music.</li>
+                </ul>
+                <p>Chacune de ces plateformes applique sa propre politique de confidentialité et de gestion des cookies. Nous vous invitons à consulter leurs déclarations respectives lors de votre navigation sur leurs services.</p>
+            </section>
+
+            <section>
+                <h3>4. Contact direct par e-mail</h3>
+                <p>Si vous décidez de nous contacter directement via l'adresse e-mail mentionnée sur le site (<a href="mailto:two2flow.contact@gmail.com">two2flow.contact@gmail.com</a>), vos données (adresse e-mail, nom/pseudonyme, contenu du message) seront uniquement utilisées pour traiter et répondre à votre demande. Elles ne seront en aucun cas cédées ni vendues à des tiers.</p>
+            </section>
+
+            <section>
+                <h3>5. Vos droits (RGPD)</h3>
+                <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant les données personnelles que vous nous transmettez directement par e-mail. Pour exercer ce droit, vous pouvez nous écrire à l'adresse e-mail de contact mentionnée ci-dessus.</p>
+            </section>
+
+            <p class="updated">Dernière mise à jour : Août 2026</p>
+
+        </div>
+
+        <div class="legal-footer">
+            <a href="/mentions-legales/">Mentions légales</a>
+            <span class="dot">&middot;</span>
+            <a href="/politique-confidentialite/">Confidentialité</a>
+        </div>
+
+    </div>
+
+    <script>
+        const shareBtn = document.querySelector('.share-btn');
+
+        shareBtn.addEventListener('click', async () => {
+            const shareData = {
+                title: 'Two2Flow',
+                text: 'Politique de confidentialité de Two2Flow',
+                url: window.location.href
+            };
+
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Partage annulé ou erreur :', err);
+                }
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Le lien du site a été copié dans le presse-papier !');
+            }
+        });
+    </script>
+
+</body>
+</html>

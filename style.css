@@ -1,0 +1,243 @@
+/* === RESET & POLICES === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Utilisation de la nouvelle police Inter */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* === FOND DE LA PAGE AVEC VRAI FLOU === */
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #2c3136; /* Couleur de secours */
+    overflow-x: hidden;
+}
+
+/* L'astuce pour flouter le fond sans flouter le reste */
+body::before {
+    content: "";
+    position: fixed;
+    top: -20px; left: -20px; right: -20px; bottom: -20px; /* Dépasse pour éviter les bords nets */
+    /* REMET TON IMAGE DE FOND ICI */
+    background-image: url('profile_two2flow.png'); 
+    background-size: cover;
+    background-position: center;
+    filter: blur(30px) brightness(0.8); /* Flou puissant + on assombrit un peu */
+    z-index: -1;
+}
+
+/* === CONTENEUR PRINCIPAL (Effet Glassmorphism) === */
+.container {
+    background-color: rgba(83, 97, 107, 0.6); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    width: 100%;
+    max-width: 450px; 
+    border-radius: 28px;
+    
+    /* NOUVELLE BORDURE : Plus épaisse (4px) et gris très foncé/opaque */
+    border: 1px solid #737373; 
+    
+    padding: 24px 24px 40px 24px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2); 
+    text-align: center;
+}
+/* === BOUTON PARTAGE === */
+.share-btn {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.share-btn:hover {
+    transform: scale(1.05);
+}
+
+.share-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: #53616b;
+}
+
+/* === SECTION PROFIL === */
+.profile-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin-bottom: 50px; /* On augmente la marge pour laisser la place au logo */
+    /* On a supprimé overflow: hidden ici pour ne plus couper le logo ! */
+}
+
+.profile-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px; /* On met l'arrondi directement sur l'image */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.profile-logo {
+    position: absolute;
+    bottom: -30px; /* On le descend plus bas (tu peux modifier ce chiffre) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85%;
+    max-width: 240px;
+    filter: drop-shadow(0px 8px 12px rgba(0,0,0,0.6));
+    z-index: 5; /* Assure que le logo passe bien par-dessus tout le reste */
+}
+
+/* === ONGLETS === */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.tab {
+    padding: 10px 24px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tab.active {
+    background-color: rgba(20, 24, 28, 0.8);
+    color: white;
+}
+
+/* === TEXTE === */
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+}
+.petit-texte {
+    font-size: 11px; /* La taille sera plus petite que les 14px de ton titre principal */
+    font-weight: 500; /* Rend ce sous-texte un peu moins gras que le titre (qui est à 700) */
+    color: rgba(255, 255, 255, 0.6); /* OPTIONNEL : rend ce texte légèrement plus transparent pour qu'il soit plus discret */
+}
+
+/* === LISTE DES LIENS === */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    background-color: rgba(43, 49, 56, 0.7); /* Fond plus transparent */
+    /* MODIFICATION ICI : Bordure plus épaisse (2px) et plus foncée */
+    border: none; 
+    border-radius: 40px;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: 500; /* Police moins épaisse */
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.link-item:hover {
+    transform: scale(1.015);
+    background-color: rgba(43, 49, 56, 0.9);
+    /* MODIFICATION ICI : Bordure encore plus foncée au survol pour le contraste */
+    border-color: rgba(25, 30, 35, 0.8); 
+}
+
+/* === POUR LA PAGE NOS SONS (Miniatures rondes) === */
+.music-img {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%; /* Remet l'arrondi parfait */
+    object-fit: cover;  /* Remplit le cercle sans déformer */
+    margin-right: 15px;
+}
+
+/* === POUR LA PAGE NOS RÉSEAUX (Icônes SVG ajustées) === */
+.social-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain; /* Empêche de rogner les logos */
+    padding: 6px;        /* Laisse respirer le logo */
+    margin-right: 15px;
+    filter: brightness(0) invert(1); /* Rend le SVG blanc */
+}
+
+.link-text {
+    flex-grow: 1;
+    text-align: center;
+    padding-right: 44px; /* Compense la largeur de l'image pour un centrage parfait */
+}
+
+/* === PIED DE PAGE === */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.footer img {
+    width: 100px;
+    height: 28px;
+    opacity: 0.9;
+}
+
+/* === LIENS LEGAUX (discrets, bas de l'ilot) === */
+.legal-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.legal-footer a {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 10px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.legal-footer a:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.legal-footer .dot {
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 10px;
+}
