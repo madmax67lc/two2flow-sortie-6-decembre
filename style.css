@@ -219,14 +219,14 @@ body::before {
 
 /* === EP (menu déroulant) === */
 .ep-summary {
-    list-style: none;
+    width: 100%;
+    border: none;
+    font-family: inherit;
+    text-align: left;
     cursor: pointer;
     padding: 8px 12px;
     user-select: none;
-}
-
-.ep-summary::-webkit-details-marker {
-    display: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .ep-cover {
@@ -257,28 +257,63 @@ body::before {
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-    transition: transform 0.25s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.ep[open] .ep-chevron svg {
+.ep.open .ep-chevron svg {
     transform: rotate(180deg);
 }
 
+/* Panneau animé : la hauteur passe de 0 à "auto" grâce à la grille */
+.ep-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    visibility: hidden; /* les titres ne sont pas atteignables au clavier une fois fermé */
+    transition:
+        grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease,
+        visibility 0s linear 0.4s;
+}
+
+.ep.open .ep-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    visibility: visible;
+    transition:
+        grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.3s ease 0.05s,
+        visibility 0s;
+}
+
 .ep-tracks {
+    min-height: 0;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 6px;
-    margin-top: 8px;
     padding: 0 14px;
 }
 
-.ep[open] .ep-tracks {
-    animation: ep-ouverture 0.25s ease;
+/* L'espace sous la case EP est à l'intérieur du panneau, pour qu'il soit à 0 une fois fermé */
+.ep-tracks > :first-child {
+    margin-top: 8px;
 }
 
-@keyframes ep-ouverture {
-    from { opacity: 0; transform: translateY(-6px); }
-    to   { opacity: 1; transform: translateY(0); }
+.ep-track {
+    transform: translateY(-6px);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ep.open .ep-track {
+    transform: translateY(0);
+}
+
+/* Respecte le réglage "réduire les animations" du système */
+@media (prefers-reduced-motion: reduce) {
+    .ep-panel, .ep-track, .ep-chevron svg {
+        transition: none;
+    }
 }
 
 .ep-track {

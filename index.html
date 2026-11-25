@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Importation de Inter (Boutons) ET Montserrat (Titres) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -33,15 +33,16 @@
         <div class="links-list">
             <!-- EP Vision Diamant (menu déroulant) -->
             <!-- TODO: liens DistroKid des titres de l'EP -->
-            <details class="ep">
-                <summary class="link-item ep-summary">
+            <div class="ep">
+                <button type="button" class="link-item ep-summary" aria-expanded="false" aria-controls="ep-vision-diamant">
                     <img src="miniature-vision-diamant.jpg" alt="Vision Diamant" class="ep-cover">
                     <span class="link-text">Vision Diamant <br><span class="petit-texte"><i>EP · 6 titres</i></span></span>
                     <span class="ep-chevron" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg>
                     </span>
-                </summary>
+                </button>
 
+                <div class="ep-panel" id="ep-vision-diamant">
                 <div class="ep-tracks">
                     <a href="#" class="link-item ep-track">
                         <img src="miniature-vision-diamant.jpg" alt="" class="music-img">
@@ -68,7 +69,13 @@
                         <span class="link-text"><span class="track-num">6</span>Vision Diamant</span>
                     </a>
                 </div>
-            </details>
+                </div>
+            </div>
+
+            <a href="https://distrokid.com/hyperfollow/two2flow/remis-feat-nmr" class="link-item">
+                <img src="miniature-remis-feat-nmr.png" alt="Remis" class="music-img">
+                <span class="link-text">Remis <br><span class="petit-texte"><i>Feat. NMR</i></span></span>
+            </a>
 
             <a href="https://distrokid.com/hyperfollow/two2flow/love-story" class="link-item">
                 <img src="miniature-love-story.png" alt="Love Story" class="music-img">
@@ -100,6 +107,15 @@
 
     </div>
 </div> <script>
+        // Menu déroulant de l'EP : ouvre / ferme le panneau (l'animation est en CSS)
+        document.querySelectorAll('.ep').forEach((ep) => {
+            const bouton = ep.querySelector('.ep-summary');
+            bouton.addEventListener('click', () => {
+                const ouvert = ep.classList.toggle('open');
+                bouton.setAttribute('aria-expanded', ouvert);
+            });
+        });
+
         // On cible le bouton de partage
         const shareBtn = document.querySelector('.share-btn');
 
