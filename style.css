@@ -217,6 +217,92 @@ body::before {
     opacity: 0.9;
 }
 
+/* === EP (menu déroulant) === */
+.ep-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 8px 12px;
+    user-select: none;
+}
+
+.ep-summary::-webkit-details-marker {
+    display: none;
+}
+
+.ep-cover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.ep-summary .link-text {
+    padding-right: 15px; /* le chevron fait la même largeur que la cover */
+    font-size: 15px;
+}
+
+.ep-chevron {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ep-chevron svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.8);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.25s ease;
+}
+
+.ep[open] .ep-chevron svg {
+    transform: rotate(180deg);
+}
+
+.ep-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+    padding: 0 14px;
+}
+
+.ep[open] .ep-tracks {
+    animation: ep-ouverture 0.25s ease;
+}
+
+@keyframes ep-ouverture {
+    from { opacity: 0; transform: translateY(-6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.ep-track {
+    padding: 4px 10px;
+    font-size: 13px;
+    background-color: rgba(43, 49, 56, 0.5);
+}
+
+.ep-track .music-img {
+    width: 34px;
+    height: 34px;
+}
+
+.ep-track .link-text {
+    padding-right: 34px;
+}
+
+.track-num {
+    font-size: 10px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    margin-right: 8px;
+}
+
 /* === LIENS LEGAUX (discrets, bas de l'ilot) === */
 .legal-footer {
     display: flex;
